@@ -1,0 +1,40 @@
+<tool id="brt_analysis" name="BRT tool prediction" version="0.1.0+galaxy0" >
+    <description>for species distribution modelling</description>
+    <requirements>
+       <requirement type="package" version="4.3.0">r-base</requirement>
+       <requirement type="package" version="1.3_14">r-dismo</requirement>
+       <requirement type="package" version="2.1.8">r-gbm</requirement>
+       <requirement type="package" version="3.4.2">r-ggplot2</requirement>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        Rscript
+         '$__tool_directory__/brt.R'
+         '$enviro'
+         '$species_files'
+         '$input3'
+         '$output1'
+         '$output2'
+         '$output3'
+    ]]></command>
+    <inputs>
+      <param name="enviro" type="data" format="txt,csv,tsv" label="Environment Data"/>
+      <param type="data" name="species_files" label="Occurrences Data File" format="tabular,txt" multiple="True" />
+      <param name="input3" type="text" label="write the name of your abiotic parameters (comma separated)"/>
+    </inputs>
+    <outputs>
+      <collection name="output1" type="list" label="Prediction files and validation files">
+            <discover_datasets pattern="(?P&lt;designation&gt;.+)\.txt" format="txt" />
+      </collection>
+      <collection name="output2" type="list" label="Species distribution prediction map" >
+            <discover_datasets pattern="(?P&lt;designation&gt;.+)\.png" format="png" />
+      </collection>  
+      <collection name="output3" type="list" label="Partial dependence plots" >
+            <discover_datasets pattern="(?P&lt;designation&gt;.+)\.pdf" format="pdf" />  
+      </collection>
+    </outputs>
+    <help><![CDATA[
+        **HELP**
+    ]]></help>
+</tool>
+
+

@@ -1,11 +1,4 @@
-# Mise en place d'un worflow galaxy pour l'écorégionalisation de la mer Dumont D'Urville.
-## Implementation of a Galaxy workflow for the ecoregionalization of the Dumont D'Urville sea.
-
-**Résumé :**
-
-L'Antarctique est un continent unique au monde, caractérisé par des conditions géographiques, climatiques, biologiques et géopolitiques particulières. L'océan Austral qui l’entoure, occupe une place centrale dans l’équilibre écologique de la région. Cet écosystème fragile est essentiel à la survie de nombreuses espèces et la mise en place d’aires marines protégées (AMP) contribue à sa protection. Ce travail présente le développement d’un workflow analytique Galaxy pour l'éco-régionalisation de la mer Dumont d'Urville, une zone cruciale pour la conservation de la biodiversité marine Antarctique. En utilisant des données d'occurrences biologiques collectées lors de la campagne CEAMARC, le workflow vise à produire des cartes de distribution d'espèces et à identifier des écorégions dans la zone étudiée. Ce projet a pour objectif de proposer des solutions informatiques accessibles, reproductibles et transparentes pour le traitement et l'analyse des données d'occurrence d’espèces. Implémenter ce workflow dans la plateforme Galaxy permet une meilleure application des principes FAIR sur les analyses, apportant un soutien technique aux propositions d'aires marines protégées de l’Est Antarctique. 
-
-**Mots clefs :** Galaxy, Antarctique, FAIR, Workflow, Eco-regionalisation.
+# Implementation of a Galaxy workflow for the ecoregionalization of the Dumont D'Urville sea.
 
 **Abstract :**
 

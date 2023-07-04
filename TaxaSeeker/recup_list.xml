@@ -1,0 +1,29 @@
+<tool id="recup_list" name="Recovery of taxa" version="0.1.0+galaxy0">
+    <requirements>
+    <requirement type="package" version="4.2.3">r-base</requirement>
+    <requirement type="package" version="1.1.1">r-dplyr</requirement>
+    <requirement type="package" version="1.6.2">r-taxonomycleanr</requirement>
+    <requirement type="package" version="0.6.5">r-xlsx</requirement>  
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        Rscript
+        '$__tool_directory__/recup_liste_taxon.R'
+        '$input1'
+        '$input2'
+        '$input3'
+        '$output1'
+        '$output2' 
+    ]]></command>
+    <inputs>
+     <param name="input1" type="data" format="txt" multiple="true" label="Occurences file"/>
+     <param name="input2" type="data" format="txt" multiple="true" label="Predictions file"/>
+     <param name="input3" type="data" format="txt,csv" label="Environement file"/>
+    </inputs>
+    <outputs>
+     <data name="output1" from_work_dir="have_model.xlsx" format="xlsx" label="Summary of taxa model "/>
+     <data name="output2" from_work_dir="liste_taxon.txt" format="txt" label="List of taxon"/>
+    </outputs>
+    <help><![CDATA[
+        **HELP**
+    ]]></help>
+</tool>

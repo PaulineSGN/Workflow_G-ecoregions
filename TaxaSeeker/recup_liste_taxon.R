@@ -67,33 +67,36 @@ for (i in 1:length(occurrence_files[[1]])) {
   have_model <- have.model(taxon, occurrence, cmpt, brt)
 }
 
-
 #Taxon pour lesquels on a obtenu un modèle
-#have_model2 = subset(have_model, have_model$`Model` != "N")
+have_model2 = subset(have_model, have_model$`Model` != "N")
+have_model3 = subset(have_model, have_model$`Model` != "N")
 
 #Obtention d'une liste de taxon (nettoyé) ayant obtenu un modèle BRT (fichier qui sera soumis à l'outils match taxa de la base de données WoRMS pour obtenir leur classification et pouvoir trier les doublons entre les rangs taxonomique)
 
 tax_net = NULL
-for (tax in have_model$taxon){
-  tax_net = rbind(tax_net,trim_taxa(tax))
+for (tax in have_model2$taxon){
+ tax_net = rbind(tax_net,trim_taxa(tax))
 }
 
-have_model$taxon = as.character(tax_net)
+have_model2$taxon <- as.character(tax_net)
 
-have_model
+#Second nettoyage (élimination de tout les taxon qui finissent par sp1./sp2 etc qui represente un doublon)
+for(tax in have_model2$taxon){
+  if (str_ends(tax,pattern = "sp*")==T){
+    have_model2 = have_model2 %>% filter(have_model2$taxon != tax)
+    have_model3 = have_model3 %>% filter(have_model3$taxon != tax)
+  }
+}
 
-#Supprimer les doublons (ici iophon et iophon sp1.)
-#for(tax in have_model2$taxon){
- # if (str_ends(tax,pattern = "sp.1")==T){
-  #  have_model2 = have_model2 %>% filter(have_model2$taxon != tax)
-  #}
-#}
+#extraction de l'objet have_model
+write.csv(have_model,file = "have_model.csv", quote = F, row.names = F, col.names = F)
 
-#extraction de l'objet have_model2
-#write.xlsx(have_model2,file = "have_model.xlsx",row.names = F)
+#obtention de la liste pour la suite du workflow si on n'utilise pas worms
+list_taxon = have_model3$taxon
+write.table(list_taxon, file= "liste_taxon.txt", quote = F, row.names = F, col.names = F)
 
 #obtention de la liste finale à soumettre a worms
-#liste_taxon = have_model2$taxon
-#write.table(liste_taxon,file = "liste_taxon.txt", quote = F, row.names = F, col.names = F)
+liste_taxon = have_model2$taxon
+write.table(liste_taxon,file = "liste_taxon_net.txt", quote = F, row.names = F, col.names = F)
 
 

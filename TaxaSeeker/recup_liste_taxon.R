@@ -82,17 +82,27 @@ have_model2$taxon <- as.character(tax_net)
 
 #Second nettoyage (élimination de tout les taxon qui finissent par sp1./sp2 etc qui represente un doublon)
 for(tax in have_model2$taxon){
-  if (str_ends(tax,pattern = "sp*")==T){
+  if (str_ends(tax, 'sp.1|sp[0-9]')==T){
     have_model2 = have_model2 %>% filter(have_model2$taxon != tax)
+  }
+}
+
+for(tax in have_model3$taxon){
+  if (str_ends(tax, 'sp.1|sp[0-9]')==T){
     have_model3 = have_model3 %>% filter(have_model3$taxon != tax)
   }
 }
 
+for(tax in have_model$taxon){
+  if (str_ends(tax, 'sp.1|sp[0-9]')==T){
+    have_model = have_model %>% filter(have_model$taxon != tax)
+  }
+}
 #extraction de l'objet have_model
 write.csv(have_model,file = "have_model.csv", quote = F, row.names = F, col.names = F)
 
 #obtention de la liste pour la suite du workflow si on n'utilise pas worms
-list_taxon = have_model3$taxon
+#list_taxon = have_model3$taxon
 write.table(list_taxon, file= "liste_taxon.txt", quote = F, row.names = F, col.names = F)
 
 #obtention de la liste finale à soumettre a worms

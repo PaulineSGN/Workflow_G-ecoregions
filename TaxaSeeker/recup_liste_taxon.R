@@ -102,7 +102,7 @@ for(tax in have_model$taxon){
 write.csv(have_model,file = "have_model.csv", quote = F, row.names = F, col.names = F)
 
 #obtention de la liste pour la suite du workflow si on n'utilise pas worms
-#list_taxon = have_model3$taxon
+list_taxon = have_model3$taxon
 write.table(list_taxon, file= "liste_taxon.txt", quote = F, row.names = F, col.names = F)
 
 #obtention de la liste finale à soumettre a worms

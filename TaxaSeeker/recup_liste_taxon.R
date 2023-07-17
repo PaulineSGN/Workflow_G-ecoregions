@@ -73,31 +73,24 @@ have_model3 = subset(have_model, have_model$`Model` != "N")
 
 #Obtention d'une liste de taxon (nettoyé) ayant obtenu un modèle BRT (fichier qui sera soumis à l'outils match taxa de la base de données WoRMS pour obtenir leur classification et pouvoir trier les doublons entre les rangs taxonomique)
 
-tax_net = NULL
-for (tax in have_model2$taxon){
- tax_net = rbind(tax_net,trim_taxa(tax))
-}
-
-have_model2$taxon <- as.character(tax_net)
+have_model$taxon <- as.character(trim_taxa(have_model$taxon))
 
 #Second nettoyage (élimination de tout les taxon qui finissent par sp1./sp2 etc qui represente un doublon)
-for(tax in have_model2$taxon){
-  if (str_ends(tax, 'sp.1|sp[0-9]')==T){
-    have_model2 = have_model2 %>% filter(have_model2$taxon != tax)
-  }
-}
 
-for(tax in have_model3$taxon){
-  if (str_ends(tax, 'sp.1|sp[0-9]')==T){
-    have_model3 = have_model3 %>% filter(have_model3$taxon != tax)
-  }
-}
+have_model2 <- have_model2 %>% filter(!str_ends(taxon, "sp.1|sp[0-9]"))
+have_model3 <- have_model3 %>% filter(!str_ends(taxon, "sp.1|sp[0-9]"))
+have_model <- have_model %>% filter(!str_ends(taxon, "sp.1|sp[0-9]"))
 
-for(tax in have_model$taxon){
-  if (str_ends(tax, 'sp.1|sp[0-9]')==T){
-    have_model = have_model %>% filter(have_model$taxon != tax)
-  }
-}
+#for(tax in have_model$taxon){
+ # if (str_ends(tax, 'sp.1|sp[0-9]')==T){
+  #  have_model = have_model %>% filter(have_model$taxon != tax)
+  #}
+#}
+
+
+############A tester 
+have_model <- have_model %>% filter(!str_ends(taxon, "sp.1|sp[0-9]"))
+
 #extraction de l'objet have_model
 write.csv(have_model,file = "have_model.csv", quote = F, row.names = F, col.names = F)
 

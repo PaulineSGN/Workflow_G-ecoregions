@@ -28,7 +28,6 @@ if (length(args)==0)
 
 env = read.table(enviro, header = TRUE, dec = ".", na.strings = "-9999")
 pred.vars = strsplit(abio_para, ",")[[1]] 
-
 data_files = strsplit(species_files,",")
   
 #Carbo,Grav,Maxbearing,Maxmagnit,Meancurmag,Meansal,Meantheta,Mud,Prof,Rugosity,Sand,Seaice_prod,Sili,Slope,Standcurmag,Standsal,Standtheta
@@ -96,8 +95,8 @@ make.prediction.brt <- function(brt_step){
 nb_file = 0
 
 for (file in data_files[[1]]) {
-  species_data <- read.table(file, dec = ",", sep = ";", header = TRUE, na.strings = "na")
-  nb_file = nb_file + 1  
+  species_data <- read.table(file, dec = ",", sep = ";", header = TRUE, na.strings = "na", colClasses = "numeric")
+  nb_file = nb_file + 1
   `%!in%` <- Negate(`%in%`)
   sp = list()
   for (n in names(species_data)) {
@@ -110,10 +109,6 @@ for (file in data_files[[1]]) {
    try(make.prediction.brt(make.brt(spe,species_data,pred.vars,env,nb_file)))
     }
 }
-
-
-
-
 
 
 

@@ -1,5 +1,5 @@
-<tool id="cluster" name="Make cluster" version="0.1.0+galaxy0">
-    <description>from BRT prediction</description>
+<tool id="Clara_cluster" name="ClaraClust" version="0.1.0+galaxy0">
+    <description>Make cluster from BRT prediction with Clara algorithm</description>
     <requirements>
        <requirement type="package" version="4.2.3">r-base</requirement>
        <requirement type="package" version="2.1.4">r-cluster</requirement>

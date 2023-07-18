@@ -107,7 +107,7 @@ for (file in data_files[[1]]) {
   
   for (spe in sp){
    try(make.prediction.brt(make.brt(spe,species_data,pred.vars,env,nb_file)))
-    }
+   }
 }
 
 

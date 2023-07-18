@@ -1,4 +1,5 @@
-<tool id="eco_map" name="Create map from cluster" version="0.1.0+galaxy0">
+<tool id="eco_map" name="EcoMap" version="0.1.0+galaxy0">
+    <description>Create map from cluster to visualize ecoregions</description>
     <requirements>
        <requirement type="package" version="4.2.3">r-base</requirement>
        <requirement type="package" version="3.3">r-tmap</requirement>

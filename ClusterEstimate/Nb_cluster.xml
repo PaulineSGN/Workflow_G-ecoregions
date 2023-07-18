@@ -1,5 +1,5 @@
-<tool id="Nb_cluster" name="Optimal number of cluster" version="0.1.0+galaxy0">
-    <description>Find an optimal number of cluster with SIH index and produce files for next step </description>
+<tool id="Cluster_Estimate" name="ClusterEstimate" version="0.1.0+galaxy0">
+    <description>Find an optimal number of cluster with SIH index </description>
     <requirements>
        <requirement type="package" version="4.2.3">r-base</requirement>
        <requirement type="package" version="2.1.4">r-cluster</requirement>
@@ -30,7 +30,7 @@
              <option value = "euclidean">euclidean</option>
              <option value = "jaccard">jaccard</option>
       </param>
-      <param name="sample" type="integer" label= "The number of samples to be drawn from the dataset" value="10"/>
+      <param name="sample" type="integer" label= "The number of samples to be drawn from the dataset" value="5"/>
     </inputs>
     <outputs>
       <data name="output1" from_work_dir="Indices_SIH.png" format="png" label="SIH index plot"/>

@@ -1,4 +1,3 @@
-#Author: Seguineau Pauline
 #Date : 21/03/2023
 # Script permettant de determiner le nombres de clusters optimal grâce à l'optimisation de l'indice SIH 
 # et de produire les fichiers dont on a besoin à l'étape suivante la clusterisation

@@ -15,6 +15,7 @@
          '$output1'
          '$output2'
          '$output3'
+         '$output4'
     ]]></command>
     <inputs>
       <param name="enviro" type="data" format="txt,csv,tsv" label="Environment Data"/>
@@ -22,13 +23,16 @@
       <param name="input3" type="text" label="write the name of your abiotic parameters (comma separated)"/>
     </inputs>
     <outputs>
-      <collection name="output1" type="list" label="Prediction files and validation files">
-            <discover_datasets pattern="(?P&lt;designation&gt;.+)\.txt" format="txt" />
+      <collection name="output1" type="list" label="Prediction files">
+            <discover_datasets pattern="(?P&lt;designation&gt;.+_brts_pred_ceamarc)\.txt" format="txt"/>
       </collection>
-      <collection name="output2" type="list" label="Species distribution prediction map" >
+      <collection name="output2" type="list" label="Validation files">
+            <discover_datasets pattern="(?P&lt;designation&gt;.+_brts_validation_ceamarc)\.txt" format="txt" />
+      </collection>
+      <collection name="output3" type="list" label="Species distribution prediction map" >
             <discover_datasets pattern="(?P&lt;designation&gt;.+)\.png" format="png" />
       </collection>  
-      <collection name="output3" type="list" label="Partial dependence plots" >
+      <collection name="output4" type="list" label="Partial dependence plots" >
             <discover_datasets pattern="(?P&lt;designation&gt;.+)\.pdf" format="pdf" />  
       </collection>
     </outputs>

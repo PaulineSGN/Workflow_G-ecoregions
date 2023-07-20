@@ -47,7 +47,7 @@ make.brt <- function(spe,data,pred.vars,env,nb_file){
      total_deviance_explained <- (total_deviance - cross_validated_residual_deviance)/total_deviance
      #Validation file
      valid = cbind(spe,brt_step$cv.statistics$discrimination.mean,brt_step$gbm.call$tree.complexity,total_deviance_explained)
-     write.table(valid, paste(nb_file,"_brts_validation_ceamarc.txt",sep=""), quote=FALSE, dec=".", row.names=F, col.names=F,append = T)}
+     write.table(valid, paste(nb_file,"_brts_validation_ceamarc.tsv",sep=""), quote=FALSE, dec=".",sep="\t" ,row.names=F, col.names=F,append = T)}
    
    return(brt_step)
    }
@@ -109,6 +109,3 @@ for (file in data_files[[1]]) {
    try(make.prediction.brt(make.brt(spe,species_data,pred.vars,env,nb_file)))
    }
 }
-
-
-

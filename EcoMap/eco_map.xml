@@ -26,6 +26,27 @@
         </test>
     </tests>
     <help><![CDATA[
-       **HELP**
+==================    
+**What it does ?**
+==================
+
+The clusters obtained in the previous step are projected on a map to obtain the spatial distribution of each ecoregion.
+
+===================         
+**How to use it ?**
+===================
+
+This script takes as input a file containing for each environmental pixel its associated cluster. See example below. The output of this script is a map representing ecoregions.
+
++--------+--------+---------+
+|  lat   | long   | cluster |
++--------+--------+---------+
+| -65.57 | 139.22 |    1    |
++--------+--------+---------+
+| -65.57 | 139.22 |    1    |
++--------+--------+---------+
+|   ...  |  ...   |   ...   |
++--------+--------+---------+
+
     ]]></help>
 </tool>

@@ -23,8 +23,8 @@
     </inputs>
     <outputs>
      <data name="output1" from_work_dir="have_model.csv" format="csv" label="Summary of taxa model "/>
-     <data name="output2" from_work_dir="liste_taxon.txt" format="txt" label="List of taxon"/>
-     <data name="output3" from_work_dir="liste_taxon_net.txt" format="txt" label="List of taxon clean"/>
+     <data name="output2" from_work_dir="list_taxa.txt" format="txt" label="List of taxa"/>
+     <data name="output3" from_work_dir="list_taxa_clean.txt" format="txt" label="List of taxa clean"/>
     </outputs>
     <help><![CDATA[
         **HELP**

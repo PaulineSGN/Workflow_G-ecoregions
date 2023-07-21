@@ -1,5 +1,5 @@
 #Ce script permet de créer un fichier nous disant pour chaque taxon si on a obtenu un modèle BRT
-#Ainsi que la liste des taxon a soumettre a worms pour obtenir leur classification et trier les redondance de comptage 
+#Ainsi que la liste des taxon 
 
 #load packages
 library(dplyr)
@@ -35,10 +35,10 @@ have.model <- function(taxon_phylum,noms_sp,comptage_sp,brt_phylum){
       pres = sum(comptage_sp[tax])
     }
     if (tax %in% brt_phylum$spe  ) {
-      brt = c(tax,"O", pres)
+      brt = c(tax,"Yes", pres)
       have_model = rbind(have_model,brt, make.row.names = F)}
     else {
-      brt = c(tax,"N", pres)
+      brt = c(tax,"No", pres)
       have_model = rbind(have_model,brt, make.row.names = F)}
   }
   colnames(have_model) = c("taxon","Model","nb_presence")
@@ -73,7 +73,7 @@ have_model3 = subset(have_model, have_model$`Model` != "N")
 
 #Obtention d'une liste de taxon (nettoyé) ayant obtenu un modèle BRT (fichier qui sera soumis à l'outils match taxa de la base de données WoRMS pour obtenir leur classification et pouvoir trier les doublons entre les rangs taxonomique)
 
-have_model$taxon <- as.character(trim_taxa(have_model$taxon))
+have_model2$taxon <- as.character(trim_taxa(have_model2$taxon))
 
 #Second nettoyage (élimination de tout les taxon qui finissent par sp1./sp2 etc qui represente un doublon)
 
@@ -81,25 +81,15 @@ have_model2 <- have_model2 %>% filter(!str_ends(taxon, "sp.1|sp[0-9]"))
 have_model3 <- have_model3 %>% filter(!str_ends(taxon, "sp.1|sp[0-9]"))
 have_model <- have_model %>% filter(!str_ends(taxon, "sp.1|sp[0-9]"))
 
-#for(tax in have_model$taxon){
- # if (str_ends(tax, 'sp.1|sp[0-9]')==T){
-  #  have_model = have_model %>% filter(have_model$taxon != tax)
-  #}
-#}
-
-
-############A tester 
-have_model <- have_model %>% filter(!str_ends(taxon, "sp.1|sp[0-9]"))
-
 #extraction de l'objet have_model
 write.csv(have_model,file = "have_model.csv", quote = F, row.names = F, col.names = F)
 
 #obtention de la liste pour la suite du workflow si on n'utilise pas worms
 list_taxon = have_model3$taxon
-write.table(list_taxon, file= "liste_taxon.txt", quote = F, row.names = F, col.names = F)
+write.table(list_taxon, file= "list_taxa.txt", quote = F, row.names = F, col.names = F)
 
 #obtention de la liste finale à soumettre a worms
 liste_taxon = have_model2$taxon
-write.table(liste_taxon,file = "liste_taxon_net.txt", quote = F, row.names = F, col.names = F)
+write.table(liste_taxon,file = "list_taxa_clean.txt", quote = F, row.names = F, col.names = F)
 
 

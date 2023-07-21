@@ -48,7 +48,8 @@ detected. Two steps are performed in this script: the creation of the taxon dist
 **How to use it ?**
 ===================
         
-This tool takes in input the environmental data as well as the species occurrence data. See examples of inputs below. This tool gives in output a file containing the predictions of probability of presence of each taxon for each pixel (latitude, longitude) environmental, a visualization of these pixels for each taxon and graphs showing the percentage of model explanation for each environmental parameter. 
+This tool takes in input the environmental data as well as the species occurrence data. See examples of inputs below. You also need to input the list of abiotic parameters (respecting the case, without spaces and separating them by commas). For example : Carbo,Grav,Maxbearing,...
+This tool gives in output a file containing the predictions of probability of presence of each taxon for each pixel (latitude, longitude) environmental, a visualization of these pixels for each taxon and graphs showing the percentage of model explanation for each environmental parameter. 
 
 **Example of environmental data input :** 
 -----------------------------------------
@@ -76,6 +77,9 @@ This tool takes in input the environmental data as well as the species occurrenc
 +---------+----------+-----------+------------------------+-----------+-----+
 |   ...   |   ...    |   ...     |          ...           |    ...    | ... |
 +---------+----------+-----------+------------------------+-----------+-----+
+
+
+
 
     ]]></help>
 </tool>

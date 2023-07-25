@@ -7,9 +7,9 @@ options(warn=-1)
 
 ### load packages
 
-library(dismo)
-library(gbm)
-library(ggplot2)
+library(dismo, warn.conflicts = FALSE)
+library(gbm, warn.conflicts = FALSE)
+library(ggplot2, warn.conflicts = FALSE)
 
 
 #load arguments

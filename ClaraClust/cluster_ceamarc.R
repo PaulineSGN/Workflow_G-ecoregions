@@ -27,7 +27,7 @@ data.bio <- read.table(data.bio, header=TRUE, sep="\t")
 test3 <- read.table(data, header = TRUE, sep="\t") 
 
 ######################################################################################################
-#Faire la clusterisation
+#Make clustering
 
 k <- k  #number of clusters
 test5 <- clara(test3, k, metric = metric,  samples = sample, sampsize = min(nrow(test3), (nrow(data.bio)/nrow(test3))+2*k))

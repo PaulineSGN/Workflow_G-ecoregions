@@ -1,6 +1,6 @@
 ##13/04/2023
 ##Seguineau Pauline
-### clusterisation complete des données Ceamarc
+### Clustering with Clara algorithm
 
 #load library 
 library(cluster)
@@ -29,7 +29,7 @@ test3 <- read.table(data, header = TRUE, sep="\t")
 ######################################################################################################
 #Faire la clusterisation
 
-k <- k  #nombre de clusters
+k <- k  #number of clusters
 test5 <- clara(test3, k, metric = metric,  samples = sample, sampsize = min(nrow(test3), (nrow(data.bio)/nrow(test3))+2*k))
 
 #######################################################################################################

@@ -29,7 +29,8 @@ if (length(args)==0)
 env = read.table(enviro, header = TRUE, dec = ".", na.strings = "-9999")
 pred.vars = strsplit(abio_para, ",")[[1]] 
 data_files = strsplit(species_files,",")
-  
+
+#environemental parameters  
 #Carbo,Grav,Maxbearing,Maxmagnit,Meancurmag,Meansal,Meantheta,Mud,Prof,Rugosity,Sand,Seaice_prod,Sili,Slope,Standcurmag,Standsal,Standtheta
 
 #Load functions

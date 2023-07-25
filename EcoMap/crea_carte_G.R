@@ -1,5 +1,5 @@
 #Author : Seguineau Pauline
-#Date : 05/04/2023
+
 
 #Create a map from cluster
 
@@ -17,7 +17,7 @@ if (length(args)==0)
 
 clus <- read.table(data, header=TRUE, na.strings = "na")
 
-#methode avec tmap
+#tmap method
 
 sf_data <- st_as_sf(clus, coords = c("long", "lat"), crs =4326)
 

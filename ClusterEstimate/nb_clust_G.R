@@ -1,6 +1,4 @@
-#Date : 21/03/2023
-# Script permettant de determiner le nombres de clusters optimal grâce à l'optimisation de l'indice SIH 
-# et de produire les fichiers dont on a besoin à l'étape suivante la clusterisation
+# Script to determine the optimal number of clusters thanks to the optimization of the SIH index and to produce the files needed in the next step of clustering
 
 #load packages
 library(cluster)
@@ -25,11 +23,11 @@ if (length(args)==0)
 
 env.data <- read.table(enviro, header = TRUE, dec = ".", na.strings = "-9999.00") 
 
-## liste de taxons modélisés retenus pour la clusterisation
+##List of modelled taxa used for clustering
 tv <- read.table(taxa_list, dec=".", sep=" ", header=F, na.strings = "NA") 
 names(tv) <- c("a")
 
-################Groupement des taxons si plusieurs fichier de prediction entrés ################
+################Grouping of taxa if multiple prediction files entered ################
 
 data_split = str_split(preds,",")
 data.bio = NULL
@@ -55,21 +53,21 @@ names(test3) <- unique(data.bio$taxon)
 
 write.table(test3, file="data_to_clus.tsv", sep="\t",quote=F,row.names=F)
 
-#Nombre de clusters max a tester
+#Max number of clusters to test
 max_k <- max_k
 
-# Initialisation des vecteurs pour stocker les indices SIH
+# Initialization of vectors to store SIH indices
 sih_values <- rep(0, max_k)
 
-# Calcul de l'indice SIH pour chaque nombre de clusters
+# Calculation of the SIH index for each number of clusters
 for (k in 2:max_k) {
-  # Exécution de clara
+  # Clara execution
   clara_res <- clara(test3, k,  metric =metric,  samples = sample, sampsize = min(nrow(test3), (nrow(data.bio)/nrow(test3))+2*k))
-  # Calcul de l'indice SIH
+  # Calculation of the SIH index
   sih_values[k] <- clara_res$silinfo$avg.width
 }
 
-# Tracé du graphique de l'indice SIH en fonction du nombre de clusters
+# Plot SIH Index Chart by Number of Clusters
 png("Indices_SIH.png")
 plot(2:max_k, sih_values[2:max_k], type = "b", xlab = "Nombre de clusters", ylab = "Indice SIH")
 dev.off()

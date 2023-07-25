@@ -95,5 +95,5 @@ write.table(liste_taxon,file = "list_taxa_clean.txt", quote = F, row.names = F, 
 
 
 
-#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
+
 

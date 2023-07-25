@@ -36,6 +36,31 @@
       <data name="output2" from_work_dir="points_clus.txt" format="txt" label="Cluster points"/>
       <data name="output3" from_work_dir="clus.txt" format="txt" label="Cluster info"/>
     </outputs>
+    <tests>
+        <test>
+            <param name="input1" value="Data_to_cluster.tsv"/>
+            <param name="input2" value="ceamarc_env.csv"/>
+            <param name="input3" value="Data.bio_table.tsv"/>
+            <param name='k' value="2"/>
+            <param name='metric' value="manhattan"/>
+            <param name='sample' value="10"/>
+            <output name='output1'>
+                <assert_contents>
+            	    <has_size value="9660" delta="1000"/>
+            	</assert_contents>
+            </output>
+            <output name='output2'>
+                <assert_contents>
+                    <has_size value="2452000" delta="1000" />
+                </assert_contents>
+            </output>
+            <output name='output3' >
+                <assert_contents>
+                    <has_size value="41183584" delta="1000000" />
+                </assert_contents>
+            </output>
+        </test>
+    </tests>
     <help><![CDATA[
 ==================    
 **What it does ?**
